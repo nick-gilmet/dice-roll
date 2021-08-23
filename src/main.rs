@@ -20,7 +20,7 @@ fn main() {
         print!("Dice to roll: ");
         let _ = stdout().flush();
         stdin().read_line(&mut s).expect("Did not enter a correct string");
-        println!("\n");
+        //println!("\n");
 
         let input = parse_input(&mut s);
         if input.die == 0 || input.num == 0 {
@@ -28,7 +28,7 @@ fn main() {
             continue;
         }
 
-        println!("Result of rolling {} {} sided die:", input.num, input.die);
+        //println!("Result of rolling {} {} sided die:", input.num, input.die);
         handle_dice_roll(&mut rng, &mut dice_map, input);
     }
 }
@@ -85,7 +85,7 @@ fn handle_dice_roll(rng: &mut ThreadRng, dice_map: &mut HashMap<usize, Vec<f64>>
 
         for side in 0..roll.die {
             if val < vec[side] {
-                print!("{}, ", side + 1);
+                print!("{} ", side + 1);
 
                 let dist = vec[side] / (roll.die as f64);
                 vec[side] = 0f64;
