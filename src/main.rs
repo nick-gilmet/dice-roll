@@ -79,6 +79,8 @@ fn handle_dice_roll(rng: &mut ThreadRng, dice_map: &mut HashMap<usize, Vec<f64>>
     // println!("Val: {}", val);
 
     let vec: &mut Vec<f64> = dice_map.get_mut(&roll.die).unwrap();
+
+    let mut sum: usize = 0;
     
     for _ in 0..roll.num {
         let mut val: f64 = rng.gen();
@@ -86,6 +88,7 @@ fn handle_dice_roll(rng: &mut ThreadRng, dice_map: &mut HashMap<usize, Vec<f64>>
         for side in 0..roll.die {
             if val < vec[side] {
                 print!("{} ", side + 1);
+                sum += side+1;
 
                 let dist = vec[side] / (roll.die as f64);
                 vec[side] = 0f64;
@@ -115,7 +118,7 @@ fn handle_dice_roll(rng: &mut ThreadRng, dice_map: &mut HashMap<usize, Vec<f64>>
     // }
     // println!(" ]\n");
 
-    println!("\n");
+    println!("\nSum: {}\n", sum);
 }
 
 fn maybe_add_dice(dice_map: &mut HashMap<usize, Vec<f64>>, val: usize) {
