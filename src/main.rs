@@ -117,8 +117,12 @@ fn handle_dice_roll(rng: &mut ThreadRng, dice_map: &mut HashMap<usize, Vec<f64>>
     //     print!("{}, ", v);
     // }
     // println!(" ]\n");
-
-    println!("\nSum: {}\n", sum);
+    if roll.num > 1 {
+        println!("\nSum: {}\n", sum);
+    }
+    else {
+        println!("\n");
+    }
 }
 
 fn maybe_add_dice(dice_map: &mut HashMap<usize, Vec<f64>>, val: usize) {
